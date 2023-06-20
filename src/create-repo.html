@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Create Repository</title>
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Create Repository</h1>
+        <button onclick="createRepo()">Create Repo</button>
+    </div>
+
+    <script>
+        function createRepo() {
+            fetch('/repo/create', {
+                    method: 'POST'
+                })
+                .then(response => {
+                    // Handle the repository creation response
+                })
+                .catch(error => {
+                    console.error('Error creating repository:', error);
+                });
+        }
+    </script>
+</body>
+
+</html>

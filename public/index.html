@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GitHub Authorization</title>
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>GitHub Authorization</h1>
+        <button onclick="authorizeGithub()">Authorize GitHub</button>
+    </div>
+
+    <script>
+        function authorizeGithub() {
+            window.location.href = '/auth/github'; // Redirect to the GitHub authentication route in the backend
+        }
+    </script>
+</body>
+
+</html>

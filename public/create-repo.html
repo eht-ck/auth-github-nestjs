@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Create Repository</title>
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        input {
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 300px;
+            font-size: 16px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Create Repository</h1>
+        <form id="createRepoForm">
+            <input type="text" id="repoNameInput" placeholder="Repository Name" required>
+            <br>
+            <input type="text" id="repoDescriptionInput" placeholder="Repository Description">
+            <br>
+            <button type="submit">Create Repo</button>
+        </form>
+    </div>
+
+    <script>
+        const createRepoForm = document.getElementById('createRepoForm');
+        createRepoForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const repoName = document.getElementById('repoNameInput').value;
+            const repoDescription = document.getElementById('repoDescriptionInput').value;
+
+            const formData = new FormData();
+            formData.append('repoName', repoName);
+            formData.append('repoDescription', repoDescription);
+
+            fetch('/repo/create', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json()) // Assuming the response is JSON
+                .then(data => {
+                    console.log('Repository creation response:', data);
+                    // Handle the response or perform further actions
+                })
+                .catch(error => {
+                    console.error('Error creating repository:', error);
+                });
+        });
+    </script>
+</body>
+
+</html>
